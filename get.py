@@ -1,18 +1,26 @@
-import requests
+import os.path
 
-url = 'https://bit.ly/3ccGLhN'
-r = requests.get(url, stream=True).raw
+SRC = 'src.png'
+DST = 'dst.png'
 
-from PIL import Image
+if not os.path.isfile(SRC):
+    import requests
 
-img = Image.open(r)
-img.save('src.png')
-print(img.get_format_mimetype)
+    url = 'https://bit.ly/3ccGLhN'
+    r = requests.get(url, stream=True).raw
 
-BUF_SIZE=1024
-with open('src.png', 'rb') as sf, open('dst.png', 'wb') as df:
-    while True:
-        data = sf.read(BUF_SIZE)
-        if not data:
-            break
-        df.write(data)
+    from PIL import Image
+
+    img = Image.open(r)
+    img.save(SRC)
+    print(img.get_format_mimetype)
+
+if not os.path.isfile(DST):
+    BUF_SIZE=1024
+    with open(SRC, 'rb') as sf, open(DST, 'wb') as df:
+        while True:
+            data = sf.read(BUF_SIZE)
+            if not data:
+                break
+            df.write(data)
+
