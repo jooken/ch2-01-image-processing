@@ -41,3 +41,6 @@ import matplotlib.image as mpimg
 
 dst_img = mpimg.imread(DST)
 print(dst_img)
+
+pseudo_img = dst_img[:,:,0]
+print(pseudo_img)
