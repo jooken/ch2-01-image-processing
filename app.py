@@ -35,3 +35,9 @@ with open(SRC, 'rb') as sf, open(DST, 'rb') as df:
 
 print("src.png's hash : {}".format(sha_src.hexdigest()))
 print("dst.png's hash : {}".format(sha_dst.hexdigest()))
+
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+dst_img = mpimg.imread(DST)
+print(dst_img)
