@@ -24,3 +24,14 @@ if not os.path.isfile(DST):
                 break
             df.write(data)
 
+import hashlib
+
+sha_src = hashlib.sha256()
+sha_dst = hashlib.sha256()
+
+with open(SRC, 'rb') as sf, open(DST, 'rb') as df:
+  sha_src.update(sf.read())
+  sha_dst.update(df.read())
+
+print("src.png's hash : {}".format(sha_src.hexdigest()))
+print("dst.png's hash : {}".format(sha_dst.hexdigest()))
