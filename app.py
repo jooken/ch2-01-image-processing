@@ -44,3 +44,15 @@ print(dst_img)
 
 pseudo_img = dst_img[:,:,0]
 print(pseudo_img)
+
+plt.suptitle('Image Processing', fontSize=18)
+plt.subplot(1,2,1)
+plt.title('Original Image')
+plt.imshow(mpimg.imread(SRC))
+
+plt.subplot(122)
+plt.title('Pseudocolor Image')
+dst_img = mpimg.imread(DST)
+pseudo_img = dst_img[:,:,0]
+plt.imshow(pseudo_img)
+plt.show()
